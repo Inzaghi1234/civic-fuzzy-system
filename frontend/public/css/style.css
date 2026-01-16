@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #2563eb;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  color: white;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  background: rgba(255,255,255,0.15);
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 22px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+.status-pill {
+  background: rgba(255,255,255,0.2);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+/* ===== TOP BAR ===== */
+.topbar {
+  background: var(--primary);
+  color: rgb(226, 38, 38);
+  padding: 20px 32px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ===== NAV ===== */
+.nav {
+  background: rgb(245, 244, 235);
+  padding: 14px 40px;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+}
+
+.nav a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #0b0b0b;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.nav a.active {
+  background: #2563eb;
+  color: rgb(43, 39, 39);
+}
+
+
+/* ===== CONTAINER ===== */
+.container {
+  padding: 32px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 520px;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  background: var(--card);
+  border-radius: var(--radius);
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+th {
+  background: #f9fafb;
+  padding: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: left;
+}
+
+td {
+  padding: 16px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ===== PRIORITY ===== */
+.priority.high { color: #dc2626; font-weight: 600; }
+.priority.medium { color: #f59e0b; font-weight: 600; }
+.priority.low { color: #16a34a; font-weight: 600; }
+
+/* ===== STATUS BADGES ===== */
+.status {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.work-in-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.resolved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* ===== BUTTONS & SELECT ===== */
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+select {
+  padding: 7px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+/* ===============================
+   FIGMA-LIKE HOVER + MOBILE RESPONSIVE
+   FOR HOME, ADMIN & ANALYSIS
+================================ */
+
+/* ===== Cards / Stat Cards / Table Cards / Chart Cards ===== */
+.card,
+.stat-card,
+.table-container,
+.chart-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover,
+.stat-card:hover,
+.table-container:hover,
+.chart-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== Buttons ===== */
+button,
+.btn {
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover,
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* ===== Navigation Tabs ===== */
+.nav a {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav a:hover {
+  background: #e0e7ff;
+  color: #1d4ed8;
+}
+
+/* ===== Table rows (Admin) ===== */
+table tbody tr {
+  transition: background 0.2s ease;
+}
+
+table tbody tr:hover {
+  background: #f1f5ff;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 900px) {
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+  }
+
+  .main {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  input, select, button {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+

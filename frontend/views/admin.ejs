@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <div class="logo">📄</div>
+    <div>
+      <h1>Indore Municipal Corporation</h1>
+      <p>Fuzzy Logic Based Civic Issue Management System</p>
+    </div>
+  </div>
+
+  <div class="status-pill">
+    <span class="dot"></span>
+    System Active
+  </div>
+</header>
+<nav class="nav">
+  <a href="/">🏠 Home</a>
+  <a class="active" href="/admin"> Admin Dashboard</a>
+</nav>
+
+<div class="container">
+  <form method="GET" action="/admin" style="margin-bottom:20px;">
+  <select name="status">
+    <option value="">All Complaints</option>
+    <option value="Work In Progress" <%= selectedStatus === "Work In Progress" ? "selected" : "" %>>
+      Work In Progress
+    </option>
+    <option value="Resolved" <%= selectedStatus === "Resolved" ? "selected" : "" %>>
+      Resolved
+    </option>
+  </select>
+  <button type="submit">Filter</button>
+</form>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Issue</th>
+    <th>Area</th>
+    <th>Score</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+
+  <% complaints.forEach(c => { %>
+  <tr>
+    <td><%= c.id %></td>
+    <td><%= c.issueType %></td>
+    <td><%= c.area %></td>
+    <td><%= c.score %></td>
+    <td class="priority <%= c.priority.toLowerCase() %>">
+      <%= c.priority %>
+    </td>
+    <td>
+      <span class="status <%= c.status.replaceAll(" ", "-").toLowerCase() %>">
+        <%= c.status %>
+      </span>
+    </td>
+    <td>
+      <form method="POST" action="/update-status">
+        <input type="hidden" name="id" value="<%= c.id %>">
+        <select name="status">
+          <option>Work In Progress</option>
+          <option>Resolved</option>
+        </select>
+        <button type="submit">Update</button>
+      </form>
+    </td>
+  </tr>
+  <% }) %>
+
+</table>
+</div>
+
+</body>
+</html>

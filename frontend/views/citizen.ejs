@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Civic Issue Management</title>
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header-left">
+    <div class="logo">📄</div>
+    <div>
+      <h1>Indore Municipal Corporation</h1>
+      <p>Fuzzy Logic Based Civic Issue Management System</p>
+    </div>
+  </div>
+
+  <div class="status-pill">
+    <span class="dot"></span>
+    System Active
+  </div>
+</header>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <a class="active" href="/">Citizen Portal</a>
+  <a href="/admin"> Admin Dashboard</a>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main class="main">
+  <h2>Citizen Complaint Portal</h2>
+  <p class="subtitle">
+    Submit your civic complaint and get automated priority assessment
+  </p>
+
+  <div class="grid">
+
+    <!-- LEFT CARD -->
+    <div class="card">
+      <h3>Submit New Complaint</h3>
+      <p class="card-sub">Fill in the details to register your civic issue</p>
+
+      <form method="POST" action="/submit">
+
+        <label>Issue Type</label>
+        <select name="issueType">
+          <option>Garbage Collection</option>
+          <option>Water Supply</option>
+          <option>Road Damage</option>
+        </select>
+
+        <label>Area / Ward</label>
+        <input type="text" name="area" placeholder="Enter area">
+
+        <div class="row">
+          <div>
+            <label>Severity (1–10)</label>
+            <input type="number" name="severity" min="1" max="10">
+          </div>
+          <div>
+            <label>Impact (1–10)</label>
+            <input type="number" name="impact" min="1" max="10">
+          </div>
+        </div>
+
+        <button type="submit">Calculate Priority</button>
+      </form>
+    </div>
+
+    <!-- RIGHT CARD -->
+    <div class="card">
+      <h3>Priority Assessment Result</h3>
+      <p class="card-sub">
+        Automated priority calculated using fuzzy logic
+      </p>
+
+      <div class="result-box">
+        Fill the form and click <b>"Calculate Priority"</b><br>
+        to see the automated assessment result
+      </div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>
