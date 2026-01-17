@@ -3,7 +3,7 @@ const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // middleware
 app.use(express.urlencoded({ extended: true }));
@@ -14,7 +14,9 @@ app.set("views", path.join(__dirname, "../frontend/views"));
 
 // DB (absolute path)
 const dbPath = path.join(__dirname, "database", "complaints.db");
-const db = new sqlite3.Database(dbPath, () => {
+const db = new sqlite3.Database(dbPath, (err) => {
+    if (err) console.error(err);
+
   console.log("SQLite database connected");
 });
 
@@ -96,5 +98,5 @@ app.post("/update-status", (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log("Server running on port " + PORT);
+  console.log(`Server running on port ${PORT}`);
 });
